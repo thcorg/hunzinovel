@@ -1,0 +1,64 @@
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+body {
+  padding-top: 70px;
+}
+footer {
+  padding: 30px 0;
+}
+
+@media screen and (min-width: 1200px) {
+    .col-lg-0 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .col-xs-0 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .row-offcanvas {
+        position: relative;
+        -webkit-transition: all .25s ease-out;
+        -o-transition: all .25s ease-out;
+        transition: all .25s ease-out;
+    }
+
+    .row-offcanvas-right {
+        right: 0;
+    }
+
+    .row-offcanvas-left {
+        left: 0;
+    }
+
+    .row-offcanvas-right
+    .sidebar-offcanvas {
+        right: -75%; /* 6 columns */
+    }
+
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+        left: -25%; /* 6 columns */
+    }
+
+    .row-offcanvas-right.active {
+        right: 75%; /* 6 columns */
+    }
+
+    .row-offcanvas-left.active {
+        left: 25%; /* 6 columns */
+    }
+
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 75%; /* 6 columns */
+    }
+}

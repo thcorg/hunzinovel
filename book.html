@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache,no-store" />
+    <meta http-equiv="expires" content="0" />
+    <title>混子小说网</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/offcanvas.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/dark.css" id="dark" rel="stylesheet" disabled="true">
+</head>
+<body>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle='collapse' data-target='#navbar'>
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <span>混子小说网</span>
+                    <span style="display: none;">鸽子小说网</span>
+                </a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="lib.html">书库</a></li>
+                    <li><a href="plus.html">PLUS</a></li>
+                </ul>
+                <form class="navbar-form navbar-right" onsubmit="return false;">
+                    <div class="btn-group">
+                        <a id="btn-toggle-style" class="btn btn-default" href="javascript: toggleStyle();" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="深色样式说明" data-content="操作系统为深色样式时，本页面固定以深色样式显示。" tabindex="0">
+                            <span class="glyphicon glyphicon-adjust"></span> 切换样式
+                        </a>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-text-size"></span> 字号设置
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript: changeFontsize('14px');">14px</a></li>
+                            <li><a href="javascript: changeFontsize('16px');">16px</a></li>
+                            <li><a href="javascript: changeFontsize('18px');">18px</a></li>
+                            <li><a href="javascript: changeFontsize('20px');">20px</a></li>
+                            <li><a href="javascript: changeFontsize('22px');">22px</a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="lib.html">书库</a></li>
+            <li class="active" id="book-title"></li>
+        </ol>
+        <h2> <small></small></h2>
+        <form onsubmit='return false;'>
+            <div id='group-password' class='input-group'>
+                <span class="input-group-addon">密钥</span>
+                <input id='input-password' class='form-control' placeholder='输入密钥以查看加密内容。'>
+                <span class='input-group-btn'>
+                    <button type='button' id='button-password' class='btn btn-default'>解密</button>
+                </span>
+            </div>
+        </form>
+        <hr>
+        <div class="bookcontent"></div>
+        <nav>
+            <ul class="pager">
+                <li id="previous"><a id="previous">上一章</a></li>
+                <li id="next"><a id="next">下一章</a></li>
+            </ul>
+        </nav>
+        <hr>
+        <footer>
+            <p>Made by Water. Last Updated: 2021/05/22.</p>
+            <p>&copy; 2020 The Hunzi Cooperation Organization</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.color-2.2.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie-1.4.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/crypto-js/crypto-js.js"></script>
+    <script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+    <script>
+        document.title = "Book " + $.getUrlParam("book") + ", Chapter " + $.getUrlParam("chapter") + " - 混子小说网";
+        $.ajax({
+            url: "js/bookList.json",
+            async: false,
+            cache: false,
+            success: function (data) {
+                booklist = data;
+            }
+        });
+        for (i in booklist) {
+            if (booklist[i].id == $.getUrlParam("book")) {
+                if ($.getUrlParam("chapter") > 1) {
+                    $("a#previous").attr("href", "book.html?book=" + $.getUrlParam("book") + "&chapter=" + String(Number($.getUrlParam("chapter")) - 1));
+                } else {
+                    $("li#previous").addClass("disabled").attr("disabled", "disabled");
+                }
+                if ($.getUrlParam("chapter") < booklist[i].chapterNum) {
+                    $("a#next").attr("href", "book.html?book=" + $.getUrlParam("book") + "&chapter=" + String(Number($.getUrlParam("chapter")) + 1));
+                } else {
+                    $("li#next").addClass("disabled").attr("disabled", "disabled");
+                }
+                $.ajax({
+                    url: "js/book" + $.getUrlParam("book") + ".json",
+                    async: false,
+                    cache: false,
+                    success: function (data) {
+                        array = data;
+                    }
+                });
+                switch (booklist[i].iscrypt) {
+                    case true:
+                        $("h2").html("<span class='crypted' length='15' src='" + booklist[i].title + "'/><br><small><span class='crypted' length='7' src='" + booklist[i].subtitle + "'/></small> <span class='badge'>" + ((booklist[i].signed) ? "<span class='glyphicon glyphicon-bookmark signed-author' /> " : "") + booklist[i].author + "</span>");
+                        $("#book-title").html("<span class='crypted' length='15' src='" + booklist[i].title + "'/>");
+                        $(".bookcontent").html(function () {
+                            var result = "<h3>";
+                            for (i in array) {
+                                if (array[i].chapterId == $.getUrlParam('chapter')) {
+                                    result += "<span class='crypted' length='5' src='" + array[i].chapterTitle + "'/></h3>";
+                                    for (j in array[i].content) {
+                                        result += "<br><p><span class='crypted' length='" + eval(10 + rand(20)) + "' src='" + array[i].content[j] + "' /></p>";
+                                    }
+                                    break;
+                                }
+                            }
+                            return result;
+                        });
+                        break;
+                    case false:
+                        $("h2").html(booklist[i].title + "<br><small>" + booklist[i].subtitle + "</small><span class='badge'>" + ((booklist[i].signed) ? "<span class='glyphicon glyphicon-bookmark signed-author' /> " : "") + booklist[i].author + "</span>");
+                        $("#book-title").html(booklist[i].title);
+                        $(".bookcontent").html(function () {
+                            var result = "<h3>";
+                            for (i in array) {
+                                if (array[i].chapterId == $.getUrlParam('chapter')) {
+                                    result += array[i].chapterTitle + "</h3>";
+                                    for (j in array[i].content) {
+                                        result += "<br><p>" + array[i].content[j] + "</p>";
+                                    }
+                                    break;
+                                }
+                            }
+                            return result;
+                        });
+                }
+                break;
+            }
+        }
+        generateZalgo();
+        $(".signed-author").tooltip({
+            "placement": "top", "title": "签约作者"
+        });
+        // 设置字体大小
+        // $(".dropdown").dropdown();
+        if (typeof ($.cookie("fontsize")) == "undefined") {
+            $.cookie("fontsize", "18px", { expires: 30, path: "/" });
+        }
+        $(".bookcontent").css(
+            "font-size", $.cookie("fontsize"));
+        function changeFontsize(val) {
+            $(".bookcontent").css(
+                "font-size", val);
+            $.cookie("fontsize", val, { expires: 30, path: "/" });
+        }
+    </script>
+</body>
+</html>

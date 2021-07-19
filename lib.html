@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache,no-store" />
+    <meta http-equiv="expires" content="0" />
+    <title>书库 - 混子小说网</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/offcanvas.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/dark.css" id="dark" rel="stylesheet" disabled="true">
+</head>
+<body>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle='collapse' data-target='#navbar'>
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <span>混子小说网</span>
+                    <span style="display: none;">鸽子小说网</span>
+                </a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">首页</a></li>
+                    <li class="active"><a href="lib.html">书库</a></li>
+                    <li><a href="plus.html">PLUS</a></li>
+                </ul>
+                <form class="navbar-form navbar-right" onsubmit="return false;">
+                    <div class="btn-group">
+                        <a id="btn-toggle-style" class="btn btn-default" href="javascript: toggleStyle();" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="深色样式说明" data-content="操作系统为深色样式时，本页面固定以深色样式显示。" tabindex="0">
+                            <span class="glyphicon glyphicon-adjust"></span> 切换样式
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">首页</a></li>
+            <li class="active">书库</li>
+        </ol>
+        <h2>书库 <small>Library</small></h2>
+        <form onsubmit="return false;">
+            <div id="group-password" class="input-group">
+                <span class="input-group-addon">密钥</span>
+                <input id="input-password" class="form-control" placeholder="输入密钥以查看加密内容。">
+                <span class="input-group-btn">
+                    <button type="button" id="button-password" class="btn btn-default">解密</button>
+                </span>
+            </div>
+        </form>
+        <hr>
+        <div class="btn-group" style="margin-bottom: 5px;">
+            <button type="button" class="btn btn-default" onclick="sortList(true);$('#booklist').on('shown.bs.collapse',function(){sortList(true);})"><span class="glyphicon glyphicon-sort-by-order"></span> 升序</button>
+            <button type="button" class="btn btn-default" onclick="sortList(false);$('#booklist').on('shown.bs.collapse',function(){sortList(false);})"><span class="glyphicon glyphicon-sort-by-order-alt"></span> 降序</button>
+        </div>
+        <div class="panel-group" id="booklist"></div>
+        <hr>
+        <footer>
+            <p>Made by Water. Last Updated: 2021/02/06.</p>
+            <p>&copy; 2020 The Hunzi Cooperation Organization</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.color-2.2.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie-1.4.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/crypto-js/crypto-js.js"></script>
+    <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/fit-columns.js"></script>
+    <script>
+        $.ajax({
+            url: 'js/bookList.json',
+            async: false,
+            cache: false,
+            success: function (data) {
+                booklist = data;
+            }
+        });
+        for (i in booklist) {
+            var htm = "<div class='panel panel-default'><div class='panel-heading bookli' id='" + booklist[i].id + "'><span class='badge'>"
+                + ((booklist[i].signed) ? "<span class='glyphicon glyphicon-bookmark signed-author' /> " : "")
+                + booklist[i].author + "</span> <a class='panel-title' role='button' data-toggle='collapse' data-parent='#booklist' href='#book" + booklist[i].id;
+            switch (booklist[i].iscrypt) {
+                case true:
+                    htm += "'><span class='crypted' length='15' src='" + booklist[i].title + "' /> <small><span class='crypted' length='7' src='" + booklist[i].subtitle + "' /></small></a></div><div class='panel-collapse collapse' id='book" + booklist[i].id + "'>";
+                    break;
+                case false:
+                    htm += "'>" + booklist[i].title + " <small>" + booklist[i].subtitle + "</small></a></div><div class='panel-collapse collapse' id='book" + booklist[i].id + "'>";
+            }
+            htm += "<div class='panel-body'><div id='panel-body-inner'>";
+            for (j = 1; j <= booklist[i].chapterNum; j++) {
+                htm += "<a class='btn btn-default' href='book.html?book=" + booklist[i].id + "&chapter=" + j + "'>" + j + "</a>"
+            }
+            htm += "</div></div></div></div>";
+            $("#booklist").append(htm);
+        }
+        $("#booklist").collapse("hide");
+        $(".signed-author").tooltip({
+            "placement": "top", "title": "签约作者"
+        });
+        $("#booklist .panel-body #panel-body-inner").isotope({
+            itemSelector: "a",
+            layoutMode: "fitColumns",
+            getSortData: {
+                id: "a"
+            }
+        })
+        function sortList(ascending) {
+            $('#booklist .panel-body #panel-body-inner').isotope({
+                sortBy:'id',
+                sortAscending: ascending
+            })
+        }
+        $('#booklist').on('shown.bs.collapse', function () {
+            sortList(true);
+        })
+    </script>
+    <script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+</body>
+</html>

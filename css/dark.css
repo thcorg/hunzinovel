@@ -1,0 +1,167 @@
+body {
+    background-color: #000;
+    color: #ddd;
+    opacity: .8;
+}
+
+.jumbotron {
+    background-color: #222;
+}
+
+.breadcrumb {
+    background-color: #333;
+}
+
+    .breadcrumb a, .pager li a {
+        color: #9cdcfe;
+    }
+
+.list-group-item {
+    border: 1px solid #222;
+    background-color: #333;
+    color: #ddd !important;
+}
+
+    .list-group-item:hover, .list-group-item:focus {
+        background-color: #222 !important;
+    }
+
+.list-group-item-heading {
+    color: #ddd !important;
+}
+
+.nav-pills li a {
+    color: #ddd !important;
+}
+
+.nav li a:hover {
+    background-color: #222;    
+}
+
+.panel-default {
+    border-color: #111;
+}
+
+    .panel-default .panel-heading {
+        background-color: #333;
+        color: #ddd;
+    }
+
+    .panel-default .panel-body {
+        border-top-color: #222 !important;
+    }
+
+a.panel-title:hover, a.panel-title:focus {
+    color: #aaa !important;
+    text-decoration-style: dotted !important;
+}
+
+.panel {
+    background-color: rgba(34,34,34,50) !important;
+}
+
+.badge {
+    background-color: #444 !important;
+    color: #ddd;
+}
+
+.pager li a {
+    border-color: #222;
+    background-color: #333;
+}
+
+    .pager li a:hover {
+        background-color: #222;
+    }
+
+.pager .disabled a {
+    background-color: #555;
+}
+
+    .pager .disabled a:hover {
+        background-color: #444;
+    }
+
+h2 small {
+    color: #999;
+}
+
+.input-group-addon {
+    border-color: #222;
+    background-color: #333;
+    color: #ccc;
+}
+
+.form-control {
+    background-color: #555;
+}
+
+.btn-default, .form-control {
+    border-color: #222;
+    color: #ccc;
+}
+
+.btn-default {
+    background-color: #333;
+}
+
+    .btn-default:active, .btn-default:focus, .btn-default:hover {
+        border-color: #111 !important;
+        background-color: #222 !important;
+        color: #bbb !important;
+    }
+
+.dropdown-menu {
+    border-color: rgba(0,0,0,.8);
+    background-color: #333;
+}
+
+    .dropdown-menu li a {
+        color: #ddd;
+    }
+
+        .dropdown-menu li a:hover {
+            background-color: #444 !important;
+            color: #ddd;
+        }
+
+.dropdown.open a {
+    border-color: #444 !important;
+}
+
+.dropdown-menu li.active a {
+    background-color: #444 !important;
+    color: #fff !important;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: #fff !important;
+}
+
+.tooltip-inner {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.popover {
+    border: 1px solid rgba(0,0,0,.2);
+    background-color: #333 !important;
+}
+
+.popover-title {
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    background-color: #444 !important;
+}
+
+.arrow:after {
+    border-bottom-color: #444 !important;
+    border-top-color: #444 !important;
+}
+
+.bookcontent .panel {
+    background-color: #222 !important;
+}
+
+.bookcontent .panel-default {
+    border-color: #222 !important;
+}

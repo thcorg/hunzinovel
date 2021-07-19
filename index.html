@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="pragma" content="no-cache,no-store" />
+    <meta http-equiv="expires" content="0" />
+    <title>首页 - 混子小说网</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/offcanvas.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/dark.css" id="dark" rel="stylesheet" disabled="true">
+</head>
+<body>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle='collapse' data-target='#navbar'>
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <span>混子小说网</span>
+                    <span style="display: none;">鸽子小说网</span>
+                </a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">首页</a></li>
+                    <li><a href="lib.html">书库</a></li>
+                    <li><a href="plus.html">PLUS</a></li>
+                </ul>
+                <form class="navbar-form navbar-right" onsubmit="return false;">
+                    <div class="btn-group">
+                        <a id="btn-toggle-style" class="btn btn-default" href="javascript: toggleStyle();" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" title="深色样式说明" data-content="操作系统为深色样式时，本页面固定以深色样式显示。" tabindex="0">
+                            <span class="glyphicon glyphicon-adjust"></span> 切换样式
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <p class="pull-right visible-xs">
+                    <button type="button" class="btn btn-primary" data-toggle="offcanvas">热门作品</button>
+                </p>
+                <div class="jumbotron">
+                    <h1>您好！<small>Hello!</small></h1>
+                    <p><strong>混子小说网</strong>（Hunzi Novel）是混子群推出的在线小说阅读网站，旨在提供优质的小说。目前本站主打作品有《<span class="crypted" length="10" src="U2FsdGVkX1+6PPP7XTDbMXLr6yJ0udyT5KGJHlzZTXcppmK+02o6uG1wdv7gK43A"></span>》等，包括玛丽苏、杰克苏、青春、校园、悬疑、玄幻、恐怖、言情等多种类型，覆盖 BG、BL、GL 等多种取向，致力于打造有门槛的阅读体验。</p>
+                    <form onsubmit='return false;'>
+                        <div id='group-password' class='input-group'>
+                            <span class="input-group-addon">密钥</span>
+                            <input id='input-password' class='form-control' placeholder='输入密钥以查看加密内容。'>
+                            <span class='input-group-btn'>
+                                <button type='button' id='button-password' class='btn btn-default'>解密</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-lg-6">
+                        <h2>最近更新 <small>Recent Updates</small></h2>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-6">
+                                <h3><span class="crypted" length="7" src="U2FsdGVkX19OY8WvLSL12Clp/voxuRrFrh/SthrndiwyrAqRjBx036IYdKW7ZWLm"></span></h3>
+                                <p><span class="label label-success">新</span> <span class="crypted" length="20" src="U2FsdGVkX1+z3bmYmDBmp1bFQUTFN2OxTytCjdH9bAaZ3Bb+4skL6N2IT23nRDhnnVHzR+/060AGAvWg6z7FUsRwQ8HoLdnQcF6OE6/9JVD/Zu0LPOVC0X/hXttYhru/JVGYF0h6bhYn6TmdiRPP00tPy3ovJBshdV5BnUmpZ7U="></span>…</p>
+                                <p><a class="btn btn-default" href="book.html?book=001&chapter=27" role="button">查看详情 &raquo;</a></p>
+                            </div>
+                            <div class="col-xs-12 col-lg-6">
+                                <h3><span class="crypted" length="7" src="U2FsdGVkX19QUwRkapUJcNfnsDhvYpXk7dU5EBBighnNIXYkdr6DGEBpNdJrUYt6"></span></h3>
+                                <p><span class="label label-success">新</span> <span class="crypted" length="20" src="U2FsdGVkX1+gUNwrwvQ4WNRTZbm2ddgAPAcXkri7xOMpVP+CU/crnqORwYruSUAICCFkaI30bNrnvIqAwhNokD9HOoONSMT5IuV+B0iNygRC8LW8B6+bOwAg8r+8bJSHJEMgCW+c4WNntV3vli5NaLds/FJSWbzn9xWtpUmtuO0="></span>…</p>
+                                <p><a class="btn btn-default" href="book.html?book=002&chapter=1" role="button">查看详情 &raquo;</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-6">
+                        <h2>编辑推荐 <small>Editors' Choice</small></h2>
+                        <hr />
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-6">
+                                <h3><span class="crypted" length="7" src="U2FsdGVkX1+V0XDEWKVZ+XVMgZjnybzuiMyp4lbh7bic5C726sYhxvf7ry3dMPAB"></span></h3>
+                                <p><span class="crypted" length="20" src="U2FsdGVkX1/NPxNRrKQKK1IF0PRrIfO28lJxPpYCu47bG2LSJDep8vlV8x82fMExWIp31HfZbEZNJ+rPi3BgUIORH+nhgtrFdMBPWmG7xSXJCY0QUoCPDOo0QoEJ3dCBJEJf5HrwVpw5aQ8OLo3TqEb4iWFA2JO7cgvCqzNKF6ck0kPzorjBd04tiPEUsFAC"></span>…</p>
+                                <p><a class="btn btn-default" href="book.html?book=001&chapter=9" role="button">查看详情 &raquo;</a></p>
+                            </div>
+                            <div class="col-xs-12 col-lg-6">
+                                <h3>《牛魂》</h3>
+                                <p>六爷使了一辈子牛。六爷使牛难得用鞭子，用嘴说，牛很听六爷的话…</p>
+                                <p><a class="btn btn-default" href="book.html?book=003&chapter=1" role="button">查看详情 &raquo;</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-9 col-sm-3 sidebar-offcanvas" id="sidebar">
+                <h3>畅销榜 <small>Best Sellers</small></h3>
+                <div class="list-group">
+                    <a class="list-group-item" href="book.html?book=001&chapter=1">
+                        <span class="badge">1</span>
+                        <h4 class="list-group-item-heading">
+                            <span class="crypted" length="10" src="U2FsdGVkX1+6PPP7XTDbMXLr6yJ0udyT5KGJHlzZTXcppmK+02o6uG1wdv7gK43A" />
+                        </h4>
+                        <small class="list-group-item-text">
+                            <span class="label label-danger">火</span>
+                            <span class="crypted" length="14" src="U2FsdGVkX18qsORexd4Rfz8JFGiNFjrH2Hljxl+VQwIHMeJDlPVcMLshOwp0CA5cdZ6bVA/GAaCzeiklE1okzN5Ak26XJf2VnVznmQxSToaTCQtPI2iS8AhMIvvR/FbQfVQCsITZnuczTS0MN4QaVQX6n/TuPMHcSDEtUFnCffsPYIDNEqkdk8Ik6ricPdL9kbrtBYmsVR2KvnY4lGGI9iKiwaLLmPbx8j5BOCUmvknwFbSdO+fsdOyXjj6tQgUfKz+Qx0zAqnNkaFEdapv0tTIZF/SpwhVyQ6Cjapy2vQzpECiiza2w2kmoOswBFQwX8XqNz2KX1uNd1bvkvsRsmKw09FCHP+/HvqvoLOJbZ5nUHGpoFjRc63PMZZd7VCMZ" />
+                        </small>
+                    </a>
+                    <a class="list-group-item" href="book.html?book=002&chapter=1">
+                        <span class="badge">2</span><span class="crypted" length="10" src="U2FsdGVkX1/KfONZqJGLhWL9B/L4lgcpBZpJw6CYJhkzIOaEfZ+5lPuQv7M9nYM2WrlirOXaFNYne+kNyQGVxQ==" />
+                    </a>
+                    <a class="list-group-item" href="book.html?book=003&chapter=1">
+                        <span class="badge">3</span>牛魂
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <p>Made by Water. Last Updated: 2021/02/06.</p>
+            <p>&copy; 2020 The Hunzi Cooperation Organization</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.color-2.2.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie-1.4.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/crypto-js/crypto-js.js"></script>
+    <script type="text/javascript" src="js/offcanvas.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+</body>
+</html>
